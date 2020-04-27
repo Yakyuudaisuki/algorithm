@@ -61,9 +61,58 @@ def insrtsrt(data):
     print("挿入ソートは{}回演算した".format(n))
     return d
 
+"""クイックソートのスクリプト"""
+def i_index(data,index,ref):
+    d = data
+    d_num = len(d)
+    for i in range(index,d_num):
+        if d(i) > ref:
+            break
+    return i
+def k_index(data,index,ref):
+    d = data
+    for k in range(index,-1,-1):
+        if d(k) < ref:
+            break
+    return k
+def exchange(data,i,k):
+    buf = data[i]
+    data[i] = data[k]
+    data[k] = buf
+    return data
+
+def quiq(data,i,k):
+    n = 0
+    d = data
+    d_num = k
+    ref = d[i]
+    while i>k:
+        i = i_index(data,i,ref)
+        print(i)
+        k = k_index(data,k,ref)
+        print(k)
+        if i<k:
+            d = exchange(data,i,k)
+    d = exchange(data,0,k)
+    d = quiq(data,0,k-1)
+    d = quiq(data,i,d_num-1)
+    return d
+
+def quiqsrt(data):
+    n = 0
+    d = data
+    d_num = len(d)
+    print(d)
+    print(quiq(d,0,d_num-1))
+
+    print("挿入ソートは{}回演算した".format(n))
+    return
+
 
 """テスト実行用のスクリプト"""
 lists = [random.randint(0,10) for i in range(10)]
+quiqsrt(lists)
+"""
 s_lists = lists.copy()
 b_lists = lists.copy()
 i_lists = lists.copy()
@@ -76,3 +125,4 @@ print("並び変えると{}".format(b_lists))
 print("初めは{}".format(i_lists))
 i_lists = insrtsrt(i_lists)
 print("並び変えると{}".format(i_lists))
+"""
