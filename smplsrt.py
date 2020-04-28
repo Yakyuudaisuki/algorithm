@@ -111,8 +111,7 @@ def quiqsrt(data):
 
 
 """テスト実行用のスクリプト"""
-lists = [random.randint(0,10) for i in range(10)]
-
+lists = [random.randint(0,100) for i in range(100)]
 s_lists = lists.copy()
 b_lists = lists.copy()
 i_lists = lists.copy()
